@@ -5,6 +5,9 @@
 // Extents and edges are hypotheses; byte verification alone does not establish original TU boundaries.
 // Edges: left=rests-on:name+veto right=rests-on:name; proof_first=false
 // Hypothesis rules: hypothesis:K, hypothesis:Z
+#include "Common/MapObject.h"
+#include "Common/ThingTemplate.h"
+
 // FUNCTION: BFME2 0x0030D3D4 size=52 name=?setBridgeRenderObject@MapObject@@QAEXW4BridgeTowerType@@PAVRenderObjClass@@@Z evidence=N:ledger tier=B hypothesis:K
 
 // FUNCTION: BFME2 0x0030D408 size=24 name=?getBridgeRenderObject@MapObject@@QAEPAVRenderObjClass@@W4BridgeTowerType@@@Z evidence=N:ledger tier=B hypothesis:K
@@ -55,7 +58,10 @@
 const ThingTemplate *MapObject::getThingTemplate( void ) const
 {
 	if (m_thingTemplate)
-		return m_thingTemplate->getFinalOverride();
+	{
+		const Overridable *finalOverride = m_thingTemplate->Overridable::getFinalOverride();
+		return static_cast<const ThingTemplate *>(finalOverride);
+	}
 
 	return NULL;
 }
