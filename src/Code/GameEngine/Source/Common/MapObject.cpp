@@ -59,7 +59,7 @@ const ThingTemplate *MapObject::getThingTemplate( void ) const
 {
 	if (m_thingTemplate)
 	{
-		const Overridable *finalOverride = m_thingTemplate->Overridable::getFinalOverride();
+		Overridable *finalOverride = m_thingTemplate->friend_getFinalOverride();
 		return static_cast<const ThingTemplate *>(finalOverride);
 	}
 

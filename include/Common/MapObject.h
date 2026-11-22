@@ -13,7 +13,7 @@ public:
 	const ThingTemplate *getThingTemplate() const;
 
 	unsigned char m_pad00[0x18];
-	const ThingTemplate *m_thingTemplate;
+	ThingTemplate *m_thingTemplate;
 };
 
 typedef char MapObjectThingTemplateOffset[(offsetof(MapObject, m_thingTemplate) == 0x18) ? 1 : -1];
