@@ -132,6 +132,10 @@
 // FUNCTION: BFME2 0x00068415 size=11 name=?rva00068415@Rva00068415@@QAEXXZ evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x00068420 size=11 name=?removeAllTerrainBibs@BaseHeightMapRenderObjClass@@QAEXXZ evidence=N:ledger tier=A
+void BaseHeightMapRenderObjClass::removeAllTerrainBibs()
+{
+	m_bibBuffer->clearAllBibs();
+}
 
 // FUNCTION: BFME2 0x0006842B size=11 name=?rva0006842B@Rva0006842B@@QAEXW4ObjectID@@@Z evidence=?:placeholder tier=A
 
