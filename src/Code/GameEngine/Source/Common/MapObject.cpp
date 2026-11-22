@@ -52,6 +52,13 @@
 // FUNCTION: BFME2 0x0030D808 size=43 name=?rva0030D808@Rva0030D808@@QAE?AVAsciiString@@XZ evidence=?:placeholder tier=B hypothesis:K
 
 // FUNCTION: BFME2 0x0030D833 size=22 name=?getThingTemplate@MapObject@@QBEPBVThingTemplate@@XZ evidence=N:ledger tier=B hypothesis:K
+const ThingTemplate *MapObject::getThingTemplate( void ) const
+{
+	if (m_thingTemplate)
+		return m_thingTemplate->getFinalOverride();
+
+	return NULL;
+}
 
 // FUNCTION: BFME2 0x0030D919 size=86 name=?bfmeGuardedCN@BfmeOwnCN@@QAEDPAVBfmeTargetCN@@PAX@Z evidence=N:ledger tier=B hypothesis:K
 
