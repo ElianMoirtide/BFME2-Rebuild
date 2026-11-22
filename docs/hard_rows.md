@@ -250,3 +250,15 @@ source retains that traversal.
 
 Keep disassembly in your local reference environment. Report the
 source-level difference, address and checker finding.
+
+### BaseHeightMap terrain bib removal
+
+`BaseHeightMapRenderObjClass::removeAllTerrainBibs` (RVA `0x00068420`,
+11 bytes) is a small wrapper that calls the bib buffer's `clearAllBibs`.
+The 1.06 body loads that buffer from `this + 0x385c` and tail-jumps to the
+method. Boat rejected a direct typed member implementation because the
+translation unit's current partial `BaseHeightMapRenderObjClass` view does
+not declare the method or bib-buffer member. The shared header explicitly
+does not recover the class layout. Adding a field there would assert a layout
+that the project has not verified, so this row needs the class layout and a
+typed access witness before it can be implemented safely.
